@@ -4,6 +4,11 @@
 
 ## Getting Started
 
+- create TypeScript project
+  ```shell
+  npx create-next-app@latest --ts
+  ```
+
 ## Dependencies
 
 - postgres
@@ -13,5 +18,11 @@
     ```
   - devDependencies
     ```shell
-    npm install --save @types/pg
+    npm install --save-dev @types/pg
     ```
+
+- .env
+  - devDependencies
+  ```shell
+  npm install --save-dev dotenv
+  ```
