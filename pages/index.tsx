@@ -197,9 +197,7 @@ const raw_data = {
     ]
 };
 
-let new_data = raw_data;
-
-let reset = () => Router.reload();
+let new_data = Object.assign({}, raw_data);
 
 const DatatablePage = () => {
 
@@ -247,6 +245,11 @@ const DatatablePage = () => {
     )
 
     const [value, setData] = useState({columns: raw_data.columns, rows: bottonRow});
+
+    const reset = () => {
+        setData({columns: raw_data.columns, rows: bottonRow});
+        new_data = Object.assign({}, raw_data);
+    }
 
     let table = <MDBDataTable // https://mdbgo.io/marta-szymanska/mdb5-demo-pro-design-blocks/pro/data/datatables.html#section-async-data
         scrollX
