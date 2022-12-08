@@ -48,6 +48,18 @@ function index() {
     );
 }
 
+let getContent = (x: string, v: string) => {
+    Router.push(
+        {
+            pathname: '/content',
+            query: {
+                value: x,
+                position: v
+            }
+        }
+    )
+}
+
 const raw_data = {
     columns: [
         {
@@ -101,6 +113,12 @@ const raw_data = {
         {
             label: "Current Stock",
             field: 'quantity',
+            sort: 'asc',
+            width: 100
+        },
+        {
+            label: "Detail",
+            field: 'detail',
             sort: 'asc',
             width: 100
         }
@@ -220,7 +238,8 @@ const DatatablePage = () => {
                             status: badValue.some((x) => x === row.status) ? '' : <button onClick={() => getDataCell('status', row.status)}>{row.status}</button>,
                             date: badValue.some((x) => x === row.date) ? '' : <button onClick={() => getDataCell('date', row.date)}>{row.date}</button>,
                             staff: badValue.some((x) => x === row.staff) ? '' : <button onClick={() => getDataCell('staff', row.staff)}>{row.staff}</button>,
-                            quantity: <button onClick={() => getDataCell('quantity', row.quantity)}>{row.quantity}</button>
+                            quantity: <button onClick={() => getDataCell('quantity', row.quantity)}>{row.quantity}</button>,
+                            detail: <button onClick={() => getContent(row.name, row.plocation === '' ? row.slocation : row.plocation)}>detail</button>
                         }
                     }
                 )
@@ -239,7 +258,8 @@ const DatatablePage = () => {
                 status: badValue.some((x) => x === row.status) ? '' : <button onClick={() => getDataCell('status', row.status)}>{row.status}</button>,
                 date: badValue.some((x) => x === row.date) ? '' : <button onClick={() => getDataCell('date', row.date)}>{row.date}</button>,
                 staff: badValue.some((x) => x === row.staff) ? '' : <button onClick={() => getDataCell('staff', row.staff)}>{row.staff}</button>,
-                quantity: <button onClick={() => getDataCell('quantity', row.quantity)}>{row.quantity}</button>
+                quantity: <button onClick={() => getDataCell('quantity', row.quantity)}>{row.quantity}</button>,
+                detail: <button onClick={() => getContent(row.name, row.plocation === '' ? row.slocation : row.plocation)}>detail</button>
             }
         }
     )
