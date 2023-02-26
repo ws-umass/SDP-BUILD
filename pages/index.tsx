@@ -282,13 +282,21 @@ const DatatablePage = () => {
     />
 
     return <div>
-                <div>
-                    {table}
-                </div>
-                <div>
-                    <button onClick={reset}>refresh table</button>
-                </div>
-            </div>;
+        <div>
+            {table}
+        </div>
+        <div>
+            <button onClick={reset}>refresh table</button>
+        </div>
+        <div className={styles.signBox}>
+            <form action="/login" method="post">
+                <button className={styles.signBoxButton} type="submit">SIGN IN</button>
+            </form>
+            <form action="/register" method="post">
+                <button className={styles.signBoxButton} type="submit">SIGN UP</button>
+            </form>
+        </div>
+    </div>;
 }
 
 export default DatatablePage;
