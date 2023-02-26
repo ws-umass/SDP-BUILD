@@ -37,6 +37,38 @@ class Database {
         const res = await this.client?.query(queryText);
         return res?.rows;
     }
+
+    async addUserTable() {
+        const queryText = `
+            CREATE TABLE IF NOT EXISTS userTable (
+                username VARCHAR(30),
+                password VARCHAR(30)
+            );
+        `;
+        await this.client?.query(queryText);
+    }
+
+    async writeUserData(username: string, password: string) {
+        await this.addUserTable();
+        const queryText = `
+            INSERT INTO userTable (username, password)
+            VALUES ($1, $2)
+            RETURNING *;
+        `;
+        const res = await this.client?.query(queryText, [username, password]);
+        console.log(res?.rows);
+    }
+
+    async readUser() {
+        await this.addUserTable();
+        try {
+            const res = await this.client?.query("SELECT * FROM userTable");
+            return res?.rows;
+        }
+        catch (error) {
+            return [];
+        }
+    }
 }
 
 export default Database;
