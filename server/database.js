@@ -50,4 +50,14 @@ export class Database {
             return [];
         }
     }
+
+    // async addTable() {
+    //     const queryText = `
+    //         CREATE TABLE IF NOT EXISTS userTable (
+    //             username VARCHAR(30),
+    //             password VARCHAR(30)
+    //         );
+    //     `;
+    //     await this.client.query(queryText);
+    // }
 }

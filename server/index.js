@@ -131,5 +131,7 @@ app.get(
     }
 );
 
+app.get("/item", (request, response) => response.sendFile("client/item.html", { root: __dirname }));
+
 // Start the server.
 app.listen(port, () => console.log(`\nServer started on http://localhost:${port}`));
